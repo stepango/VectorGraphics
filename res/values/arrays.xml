@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="tests">
+        <item>acid</item>
+        <item>drama</item>
+        <item>lion</item>
+        <item>tiger</item>
+        <item>acid_opt</item>
+        <item>drama_opt</item>
+        <item>lion_opt</item>
+        <item>tiger_opt</item>
+        <item>knot</item>
+    </array>
+    <array name="lib_names">
+        <item>androidsvg</item>
+        <item>svg-android</item>
+        <item>tpsvg</item>
+        <item>svg4mobile</item>
+    </array>
+</resources>
