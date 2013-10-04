@@ -1,7 +1,7 @@
 package com.elegion.VectorGraphics;
 
+import android.graphics.Canvas;
 import android.os.Bundle;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.larvalabs.svgandroid.SVG;
 import com.larvalabs.svgandroid.SVGBuilder;
@@ -18,9 +18,16 @@ public class SvgAndroidFragment extends BaseFragment {
     getActivity().getActionBar().setTitle("svg-android");
     try {
       SVG svg = new SVGBuilder().readFromResource(getResources(), getSvgId()).build();
-      ImageView imageView = new ImageView(getActivity());
+      ImageView imageView = new ImageView(getActivity()){
+        @Override
+        protected void onDraw(final Canvas canvas) {
+          final long time = System.nanoTime();
+          super.onDraw(canvas);
+          reportDrawDuration(System.nanoTime() - time);
+        }
+      };
       imageView.setImageDrawable(svg.getDrawable());
-      ((ViewGroup) getView()).addView(imageView);
+      addViewToSvgArea(imageView);
     } catch (SVGParseException e) {
       e.printStackTrace();
       //SVG 1.1 not supported

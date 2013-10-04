@@ -1,9 +1,9 @@
 package com.elegion.VectorGraphics;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.Display;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import com.grub.svg4mobile.Svg4mobileView;
 
@@ -16,7 +16,14 @@ public class Svg4MobileFragment extends BaseFragment {
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
     getActivity().getActionBar().setTitle("Svg4Mobile");
-    Svg4mobileView view = new Svg4mobileView(getActivity());
+    Svg4mobileView view = new Svg4mobileView(getActivity()){
+      @Override
+      protected void onDraw(final Canvas canvas) {
+        final long time = System.nanoTime();
+        super.onDraw(canvas);
+        reportDrawDuration(System.nanoTime() - time);
+      }
+    };
     Display display = ((WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
     if (display.getOrientation() == 0) { // Vertical
       view.setDisplayWidth(display.getWidth());
@@ -28,6 +35,6 @@ public class Svg4MobileFragment extends BaseFragment {
 
     view.setResource(getSvgId());
     view.camReset();
-    ((ViewGroup) getView()).addView(view);
+   addViewToSvgArea(view);
   }
 }

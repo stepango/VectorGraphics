@@ -128,6 +128,23 @@ QUESTIONS:
      xmlns:html="http://www.w3.org/1999/xhtml"
      width="600px" height="400px" viewBox="-600 -400 1200 800" x="-10000" y="-10000"
      version="1.1">
+
+<!-- Stylesheet from the file acid1.css (see above)  -->
+<style type="text/css">
+/* Test 17 - id selector */
+#right-eye {
+  fill: rgb(109%,302%,100%);
+}
+/* Test 17 - class selector */
+.head {
+  stroke: #000;
+  stroke-width: 1pc;
+}
+/* Test 17 - type selector with attribute selector */
+circle[cx="-120"][cy="-22.5%"][r="2%"] {
+  fill: green;
+}
+</style>
      
      <!-- Test 3 -->
      <title><html:h1>SVG Acid Test 1</html:h1></title>
@@ -200,7 +217,8 @@ QUESTIONS:
            <!-- Test 16 -->
            <!-- Test 17 -->
            <!-- Test 20 -->           
-           <SVG:circle cx="-120" cy="-22.5%" r="2%" fill="red" />
+           <!-- SVG:circle cx="-120" cy="-22.5%" r="2%" fill="red" / -->
+           <SVG:circle cx="-120" cy="-22.5%" r="2%" style="fill:green" /><!--  green from CSS rule above -->
          </g>
        </g>
      
